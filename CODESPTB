@@ -1,0 +1,225 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int troca(int vetor[], int tamanho);
+
+int main(){
+	int qtde_vetores, qtde_elementos;
+	int vetor[100000];
+
+	scanf("%d",&qtde_vetores);
+
+	while(qtde_vetores--){
+		scanf("%d",&qtde_elementos);
+        for(int j=0 ; j<qtde_elementos; j++){
+			scanf("%d", &vetor[j]);
+		}
+		cout << troca(vetor, qtde_elementos) << "\n";
+	}
+}
+
+int troca(int vetor[], int tamanho){
+   int aux, posicao, contador=0;
+   for (int i = 1; i < tamanho; i++) {
+       aux = vetor[i];
+       for (posicao = i-1; posicao >= 0 && (vetor[posicao] > aux); posicao-- ) {
+           vetor[posicao+1] = vetor[posicao];
+           contador++;
+       }
+       vetor[posicao+1] = aux;
+   }
+   return contador;
+}
+
+
+
+
+//#include <bits/stdc++.h>
+//
+//using namespace std;
+//
+//void troca(long int vetor[], long int i, long int j, long int qtde_elementos);
+//
+//int main(){
+//    int qtde_pesquisa, qtde_elementos;
+//    scanf("%d", &qtde_pesquisa); // lendo a quantidade de pesquisas
+//    if(qtde_pesquisa >=1 && qtde_pesquisa <= 5){
+//        while(qtde_pesquisa--){
+//            scanf("%d", &qtde_elementos); // lendo a quantidade de elementos no vetor
+//            if(qtde_elementos >= 1 && qtde_elementos <= 100000){
+//                long int vetor[qtde_elementos];
+//                for(int i=0; i < qtde_elementos; i++){
+//                    scanf("%ld",&vetor[i]);
+//                }
+//
+//                int trocas = 0;
+//                for(int i=0; i < qtde_elementos; i++){
+//                    int j = i+1;
+//                    while(j < qtde_elementos){
+//                        if(vetor[j] < vetor[i]){
+//                            troca(vetor, i, j, qtde_elementos);
+//                            trocas += 1;
+//                        }
+//                        j++;
+//                    }
+//                }
+//                printf("%d\n", trocas);
+//            }
+//        }
+//    }
+//return 0;
+//}
+//
+//void troca(long int vetor[], long int i, long int j, long int qtde_elementos){
+//    int t;
+//    t = vetor[i];
+//    vetor[i] = vetor[j];
+//    vetor[j] = t;
+//}
+
+
+
+
+
+
+
+//#include <iostream>
+//
+//using namespace std;
+//
+//int pesquisaBinaria(long long int vetor[],long long int query, int tamanho);
+//
+//int main(){
+//    int elementos, queries;
+//    cin >> elementos >> queries;
+//    long long int vetor[elementos];
+//
+//    for(int i=0; i < elementos; i++){
+//        cin >> vetor[i];
+//    }
+//
+//    while(queries--){
+//        long long int query;
+//        cin >> query;
+//        int resposta = pesquisaBinaria(vetor, query, elementos);
+//        if(resposta == -1){
+//            cout << "-1" << endl;
+//        }else{
+//            cout << resposta << endl;
+//        }
+//    }
+//    return 0;
+//}
+//
+//int pesquisaBinaria(long long int vetor[],long long int query, int tamanho){
+//    int inicio = 0;
+//    tamanho = tamanho-1;
+//    int resposta = -1;
+//
+//    while(inicio <= tamanho) {
+//        int meio = (inicio + tamanho)/2;
+//        if(vetor[meio] == query) {
+//            resposta = meio;
+//            tamanho = meio - 1;
+//        }else if(vetor[meio] > query) {
+//            tamanho = meio - 1;
+//        }
+//        else {
+//            inicio = meio + 1;
+//        }
+//    }
+//    return resposta;
+//}
+
+
+
+
+
+
+
+
+
+
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//int buscaBinaria(vector<long int> &vetor, long int tamanho, long int item){
+//    int begin = 0;
+//    int end = tamanho - 1;
+//    while (begin <= end) {
+//        int i = (begin + end) / 2;
+//        if (vetor[i] == item) {
+//            return i;
+//        }
+//        if (vetor[i] < item) {
+//            begin = i + 1;
+//        } else {
+//            end = i;
+//        }
+//    }
+//    return -1;
+//}
+//
+//int main(){
+//    vector<long int> vetor;
+//    long int tamanho, v, valor;
+//
+//    cin >> tamanho >> v; // tamanho do vetor
+//
+//    for(int num=0; num < tamanho; ++num){
+//        cin >> valor;
+//        vetor.push_back(valor);
+//    }
+//
+//    for(int num=0; num < v; ++num){
+//        cin >> valor;
+//        cout << buscaBinaria(vetor, tamanho, valor) << endl;
+//    }
+//    return 0;
+//}
+
+
+
+
+//#include <iostream>
+//
+//using namespace std;
+//
+//int buscaBinaria(int vetor[], int tamanho, int item){
+//    int begin = 0;
+//    int end = tamanho - 1;
+//
+//    while (begin <= end) {
+//        int i = (begin + end) / 2;
+//        if (vetor[i] == item) {
+//            return i;
+//        }
+//        if (vetor[i] < item) {
+//            begin = i + 1;
+//        } else {
+//            end = i;
+//        }
+//    }
+//    return -1;
+//}
+//
+//int main(){
+//    int n, i, valor;
+//    cin >> i >> n; // tamanho do vetor
+//
+//    int vetor[n];
+//    for(int x = 0; x < i; x++){
+//        cin >> valor;
+//        vetor[x] = valor;
+//    }
+//
+//    for(int y=0; y < n; y++){
+//        cin >> valor;
+//        cout << buscaBinaria(vetor, i, valor) << endl;
+//    }
+//
+//    return 0;
+//}
