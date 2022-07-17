@@ -1,0 +1,48 @@
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    int pesquisaBinaria(long long int vetor[],long long int pesquisa, int tamanho);
+
+    int main(){
+        int qtd_elementos, qtd_pesquisa;
+        scanf("%d%d", &qtd_elementos, &qtd_pesquisa);
+        long long int vetor[qtd_elementos];
+        for(int i=0; i < qtd_elementos; i++){
+            scanf("%lld",&vetor[i]);
+        }
+
+        while(qtd_pesquisa--){
+            long long int pesquisa;
+            scanf("%lld",&pesquisa);
+            int posicao = pesquisaBinaria(vetor, pesquisa, qtd_elementos);
+            if(posicao == -1) {
+                printf("-1\n");
+            }else {
+                printf("%d\n", posicao);
+            }
+        }
+        return 0;
+    }
+
+    int pesquisaBinaria(long long int vetor[],long long int query, int tamanho){
+        int inicio = 0;
+        tamanho = tamanho-1;
+        int posicao = -1;
+
+        while(inicio <= tamanho){
+            int meio = (inicio + tamanho)/2;
+
+            if(vetor[meio] == query){
+                posicao = meio;
+                tamanho = meio - 1;
+            }
+            else if(vetor[meio] > query) {
+                tamanho = meio - 1;
+            }
+            else {
+                inicio = meio + 1;
+            }
+        }
+        return posicao;
+    }
